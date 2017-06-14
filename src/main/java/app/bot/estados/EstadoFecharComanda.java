@@ -36,7 +36,7 @@ public class EstadoFecharComanda extends Estado {
                         cliente.setConsumoMedio(cliente.getConsumoMedio() + comanda.getTotal());
                     }
                     else{
-                        cliente.setConsumoMedio(cliente.getConsumoMedio() + (comanda.getTotal() / 2));
+                        cliente.setConsumoMedio((cliente.getConsumoMedio() + comanda.getTotal()) / 2);
                     }
                     salvaConsumoMedio();
                     
@@ -53,7 +53,12 @@ public class EstadoFecharComanda extends Estado {
                     proximoEstado = new EstadoPagamento(context, cliente, comanda);
                     break;
                 case "2":
-                    cliente.setConsumoMedio(cliente.getConsumoMedio() + comanda.getTotal());
+                    if(cliente.getConsumoMedio() == 0.00){
+                        cliente.setConsumoMedio(cliente.getConsumoMedio() + comanda.getTotal());
+                    }
+                    else{
+                        cliente.setConsumoMedio((cliente.getConsumoMedio() + comanda.getTotal()) / 2);
+                    }
                     salvaConsumoMedio();
                     
                     valorPagamento = totalDesconto;
