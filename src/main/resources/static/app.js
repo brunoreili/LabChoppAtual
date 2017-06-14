@@ -2,7 +2,7 @@ var app = angular.module("botapp",['ngRoute']);
 
 app.controller("botctrl", function($scope, $http){
        
-    $scope.enviar = function(texto, $http){
+    $scope.enviar = function(texto){
         $scope.enviando=true;
               
         var update = {};
